@@ -6,7 +6,7 @@ var app = new Vue({
 	created: function () {
 		let _this = this;
 		$.getJSON(
-			"arlo-sch.github.io/js/data.json", 
+			"/js/data.json", 
 			function (json) { _this.json = json; console.log(json); }
 		)
 	}
