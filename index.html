@@ -34,7 +34,7 @@
 			<template v-if="json.petInfo.images">
 				<h4>Pet Images</h4>
 				<template v-for="image of json.petInfo.images" >
-					<img :source="'../assets/petImages/' + image">
+					<img :src="'../assets/petImages/' + image">
 						{{image}}
 					</img>
 					<br/>
@@ -43,16 +43,12 @@
 			<template v-if="json.petInfo.documentImages">
 				<h4>Documents</h4>
 				<template v-for="image of json.petInfo.documentImages" >
-					<img :source="'../assets/documentImages/' + image">
+					<img :src="'../assets/documentImages/' + image">
 						{{image}}
 					</img>
 					<br/>
 				</template>
 			</template>
-
-			TODO:  <br/>
-			- images <br/>
-			- document images <br/>
 		</template>
 	</div>
 	<script src="js/index.js"></script>
