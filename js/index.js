@@ -20,10 +20,10 @@ var app = new Vue({
 					"zipCode": "97211"    
 				},
 				"petInfo": {
-					"petName": "Arlo",
-					"petWeight": "13 lbs",
-					"petDescription": "Chihuaha/terrier mix, all black coat. Friendly, loves to be warm and snuggle.",
-					"petImages": [
+					"name": "Arlo",
+					"weight": "13 lbs",
+					"description": "Chihuaha/terrier mix, all black coat. Friendly, loves to be warm and snuggle.",
+					"images": [
 						"arlo1.jpg",
 						"arlo2.jpg",
 						"arlo3.jpg"
@@ -35,6 +35,10 @@ var app = new Vue({
 			};
 		}
 		else {
+			// TODO:
+			// - Get URL parameter "auth"
+			// - Use "auth" param to get file. Possibly en/decrypt data
+			//		using "auth" value as the encryption key.
 			$.getJSON(
 				"/js/data.json", 
 				function (json) { _this.json = json; }
