@@ -3,6 +3,9 @@ var app = new Vue({
 	data: {
 		json: null
 	},
+	methods: {
+		log(message) { console.log(message); }
+	},
 	created: function () {
 		let _this = this;
 		var host = window.location.hostname;
@@ -23,7 +26,7 @@ var app = new Vue({
 					"name": "Arlo",
 					"weight": "13 lbs",
 					"description": "Chihuaha/terrier mix, all black coat. Friendly, loves to be warm and snuggle.",
-					"images": [
+					"petImages": [
 						"arlo1.jpg",
 						"arlo2.jpg",
 						"arlo3.jpg"

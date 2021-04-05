@@ -31,10 +31,10 @@
 			Name: {{json.petInfo.name}} <br/>
 			Weight: {{json.petInfo.weight}} <br/>
 			Description: {{json.petInfo.description}} <br/>
-			<template v-if="json.petInfo.images">
+			<template v-if="json.petInfo.petImages">
 				<h4>Pet Images</h4>
-				<template v-for="image of json.petInfo.images" >
-					<img :src="'../assets/petImages/' + image">
+				<template v-for="image of json.petInfo.petImages" >
+					<img :src="'../assets/petImages/' + image" style="width:300px;height:300px;">
 						{{image}}
 					</img>
 					<br/>
@@ -43,7 +43,7 @@
 			<template v-if="json.petInfo.documentImages">
 				<h4>Documents</h4>
 				<template v-for="image of json.petInfo.documentImages" >
-					<img :src="'../assets/documentImages/' + image">
+					<img :src="'../assets/documentImages/' + image" style="width:300px;height:300px;">
 						{{image}}
 					</img>
 					<br/>
