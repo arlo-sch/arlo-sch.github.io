@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>You Found Arlo!</title>
+	<meta name="description" content="Admin Page">
+	<meta name="author" content="Evan Schallerer">
+	<link rel="stylesheet" href="css/admin.css?v=1.0">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+</head>
+
+<body>
+	<div id="admin">
+    <label>Input: </label>
+    <input v-model="input" placeholder="Enter text to encrypt/decrypt"/>
+    <br/>
+    <label>Key: </label>
+    <input v-model="key" placeholder="Enter key"/>
+    <br/>
+    <button v-on:click="encryptWithAES">Encrypt</button>
+    <button v-on:click="decryptWithAES">Decrypt</button>
+    <br/><br/>
+    <div v-if="output">
+      Output value: {{ output }}
+      <br/>
+      <button v-on:click="copyOutputToClipboard">Copy Output to Clipboard</button>
+      <br/><br/>
+      Url Encoded Key: {{ urlEncodeKey() }}
+      <br/>
+      <button v-on:click="copyKeyToClipboard">Copy Encoded Key to Clipboard</button>
+    </div>
+  </div>
+	<script src="js/admin.js"></script>
+</body>
+
+</html>

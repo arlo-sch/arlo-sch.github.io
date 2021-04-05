@@ -7,19 +7,31 @@
         "addressLine2": "",
         "city": "Portland",
         "state": "Oregon",
-        "zipCode": "97211"    
+        "zipCode": "97211"
     },
     "petInfo": {
         "name": "Arlo",
         "weight": "13 lbs",
-        "description": "Chihuaha/terrier mix, all black coat. Friendly, loves to be warm and snuggle.",
+        "description": "Chihuahua/terrier mix, all black coat. Friendly, loves to be warm and snuggle.",
         "petImages": [
-            "arlo1.jpg",
-            "arlo2.jpg",
-            "arlo3.jpg"
+            {
+                "path": "arlo1.jpg",
+                "description": "Arlo with his elephant."
+            },
+            {
+                "path": "arlo2.jpg",
+                "description": "Arlo at the park."
+            },
+            {
+                "path": "arlo3.jpg",
+                "description": "Arlo with his billy goat."
+            }
         ],
         "documentImages": [
-            "rabiesTag.jpg"
+            {
+                "path": "rabiesTag.jpg",
+                "description": "Arlo's rabies vaccination tag."
+            }
         ]
     }
 }

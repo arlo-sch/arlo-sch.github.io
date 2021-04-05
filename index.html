@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="css/index.css?v=1.0">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
 </head>
 
 <body>
@@ -34,8 +35,8 @@
 			<template v-if="json.petInfo.petImages">
 				<h4>Pet Images</h4>
 				<template v-for="image of json.petInfo.petImages" >
-					<img :src="'../assets/petImages/' + image" style="max-width: 300px; height: auto;">
-						{{image}}
+					<img :src="'../assets/petImages/' + image.path" style="max-width: 300px; height: auto;">
+						<figcaption v-if="image.description">{{image.description}}</figcaption>
 					</img>
 					<br/>
 				</template>
@@ -43,8 +44,8 @@
 			<template v-if="json.petInfo.documentImages">
 				<h4>Documents</h4>
 				<template v-for="image of json.petInfo.documentImages" >
-					<img :src="'../assets/documentImages/' + image" style="max-width: 300px; height: auto;">
-						{{image}}
+					<img :src="'../assets/documentImages/' + image.path" style="max-width: 300px; height: auto;">
+						<figcaption v-if="image.description">{{image.description}}</figcaption>
 					</img>
 					<br/>
 				</template>

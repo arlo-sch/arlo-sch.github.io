@@ -4,48 +4,22 @@ var app = new Vue({
 		json: null
 	},
 	methods: {
-		log(message) { console.log(message); }
+		decryptWithAES(text, key) {
+			return CryptoJS.AES.decrypt(text, key).toString(CryptoJS.enc.Utf8);
+    }
 	},
 	created: function () {
 		let _this = this;
-		var host = window.location.hostname;
-		console.log(host);
-		if (host != "arlo-sch.github.io"){
-			_this.json = {
-				"contactInfo": {
-					"phoneNumber": "(503) 555-5555",
-					"emailAddress": "someone@gmail.com",
-					"humanName": "Someone Somewhere",
-					"addressLine1": "1234 Somewhere St.",
-					"addressLine2": "",
-					"city": "Portland",
-					"state": "Oregon",
-					"zipCode": "97211"    
-				},
-				"petInfo": {
-					"name": "Arlo",
-					"weight": "13 lbs",
-					"description": "Chihuaha/terrier mix, all black coat. Friendly, loves to be warm and snuggle.",
-					"petImages": [
-						"arlo1.jpg",
-						"arlo2.jpg",
-						"arlo3.jpg"
-					],
-					"documentImages": [
-						"rabiesTag.jpg"
-					]
+		$.getJSON(
+			"/js/data_enc.json", 
+			function (json) {
+				const searchParams = new URLSearchParams(window.location.search);
+				if (searchParams.has("auth")){
+					const authKey = searchParams.get("auth");
+					const decryptedData = _this.decryptWithAES(json.data, authKey);
+					_this.json = JSON.parse(decryptedData);
 				}
-			};
-		}
-		else {
-			// TODO:
-			// - Get URL parameter "auth"
-			// - Use "auth" param to get file. Possibly en/decrypt data
-			//		using "auth" value as the encryption key.
-			$.getJSON(
-				"/js/data.json", 
-				function (json) { _this.json = json; }
-			);
-		}
+			}
+		);
 	}
 })
