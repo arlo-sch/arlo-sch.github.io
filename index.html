@@ -34,7 +34,7 @@
 		Description: {{json.petInfo.description}} <br/>
 		<h4>Pet Images</h4>
 		<template v-for="image of json.petInfo.images" >
-			<img :source="'../assets/petImages/ + 'image">
+			<img :source="'../assets/petImages/' + image">
 				{{image}}
 			</img>
 			<br/>
