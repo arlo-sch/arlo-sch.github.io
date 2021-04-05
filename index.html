@@ -1,7 +1,5 @@
 <!doctype html>
-
 <html lang="en">
-
 <head>
 	<meta charset="utf-8">
 	<title>You Found Arlo!</title>
@@ -14,35 +12,48 @@
 
 <body>
 	<div id="app">
-		<h2>Owner Information</h2>
-		Name: {{json.contactInfo.humanName}} <br/>
-		Phone: {{json.contactInfo.phoneNumber}} <br/>
-		Email: {{json.contactInfo.emailAddress}} <br/>
-		Address: <br/>{{json.contactInfo.addressLine1}} <br/>
-		<template v-if="json.contactInfo.addressLine2"{{json.contactInfo.addressLine2}}>
-			{{json.contactInfo.addressLine2}} <br/>
-		</template> 
-		{{json.contactInfo.city}} <br/>
-		{{json.contactInfo.state}} <br/>
-		{{json.contactInfo.zipCode}} <br/>
+		<template v-if="json">
+			<h2>Owner Information</h2>
+			Name: {{json.contactInfo.humanName}} <br/>
+			Phone: {{json.contactInfo.phoneNumber}} <br/>
+			Email: {{json.contactInfo.emailAddress}} <br/>
+			Address: <br/>{{json.contactInfo.addressLine1}} <br/>
+			<template v-if="json.contactInfo.addressLine2"{{json.contactInfo.addressLine2}}>
+				{{json.contactInfo.addressLine2}} <br/>
+			</template> 
+			{{json.contactInfo.city}} <br/>
+			{{json.contactInfo.state}} <br/>
+			{{json.contactInfo.zipCode}} <br/>
 
-		<hr/>
+			<hr/>
 
-		<h2>Pet Information</h2>
-		Name: {{json.petInfo.name}} <br/>
-		Weight: {{json.petInfo.weight}} <br/>
-		Description: {{json.petInfo.description}} <br/>
-		<h4>Pet Images</h4>
-		<template v-for="image of json.petInfo.images" >
-			<img :source="'../assets/petImages/' + image">
-				{{image}}
-			</img>
-			<br/>
+			<h2>Pet Information</h2>
+			Name: {{json.petInfo.name}} <br/>
+			Weight: {{json.petInfo.weight}} <br/>
+			Description: {{json.petInfo.description}} <br/>
+			<template v-if="json.petInfo.images">
+				<h4>Pet Images</h4>
+				<template v-for="image of json.petInfo.images" >
+					<img :source="'../assets/petImages/' + image">
+						{{image}}
+					</img>
+					<br/>
+				</template>
+			</template>
+			<template v-if="json.petInfo.documentImages">
+				<h4>Documents</h4>
+				<template v-for="image of json.petInfo.documentImages" >
+					<img :source="'../assets/documentImages/' + image">
+						{{image}}
+					</img>
+					<br/>
+				</template>
+			</template>
+
+			TODO:  <br/>
+			- images <br/>
+			- document images <br/>
 		</template>
-
-		TODO:  <br/>
-		- images <br/>
-		- document images <br/>
 	</div>
 	<script src="js/index.js"></script>
 </body>
