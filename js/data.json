@@ -10,9 +10,9 @@
         "zipCode": "97211"    
     },
     "petInfo": {
-        "petName": "Arlo",
-        "petWeight": "13 lbs",
-        "petDescription": "Chihuaha/terrier mix, all black coat. Friendly, loves to be warm and snuggle.",
+        "name": "Arlo",
+        "weight": "13 lbs",
+        "description": "Chihuaha/terrier mix, all black coat. Friendly, loves to be warm and snuggle.",
         "petImages": [
             "arlo1.jpg",
             "arlo2.jpg",
