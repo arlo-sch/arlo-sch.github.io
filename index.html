@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>You Found Arlo!</title>
 	<meta name="description" content="Found Arlo">
 	<meta name="author" content="Evan Schallerer">
@@ -14,42 +15,56 @@
 <body>
 	<div id="app">
 		<template v-if="json">
-			<h2>Owner Information</h2>
-			Name: {{json.contactInfo.humanName}} <br/>
-			Phone: {{json.contactInfo.phoneNumber}} <br/>
-			Email: {{json.contactInfo.emailAddress}} <br/>
-			Address: <br/>{{json.contactInfo.addressLine1}} <br/>
-			<template v-if="json.contactInfo.addressLine2"{{json.contactInfo.addressLine2}}>
-				{{json.contactInfo.addressLine2}} <br/>
-			</template> 
-			{{json.contactInfo.city}} <br/>
-			{{json.contactInfo.state}} <br/>
-			{{json.contactInfo.zipCode}} <br/>
+			<header class="header">
+				<h1>You Found {{json.petInfo.name}}!</h1>
+			</header>
+			<div id="owner-info" class="info">
+				<h2>Owner Information</h2>
+				<span>{{json.contactInfo.humanName}}</span>
+				<span>{{json.contactInfo.phoneNumber}}</span>
+				<span>{{json.contactInfo.emailAddress}}</span>
+				<span>
+					<span>{{json.contactInfo.addressLine1}}</span>
+					<span>
+						<template v-if="json.contactInfo.addressLine2"{{json.contactInfo.addressLine2}}>
+							{{json.contactInfo.addressLine2}} 
+						</template>
+					</span>	
+					<span>{{json.contactInfo.city}}, {{json.contactInfo.state}} {{json.contactInfo.zipCode}}</span>
+				</span>
+				<a :href="buildGoogleMapsLink()">
+					<img src="../assets/icons/directions_black_24dp.svg"/>
+				</a>
+			</div>
 
-			<hr/>
+			<div id="pet-info" class="info">
+				<h2>Pet Information</h2>
+				<span>{{json.petInfo.name}}</span>
+				<span>{{json.petInfo.weight}}</span>
+				<span>{{json.petInfo.description}}</span>
+			</div>
 
-			<h2>Pet Information</h2>
-			Name: {{json.petInfo.name}} <br/>
-			Weight: {{json.petInfo.weight}} <br/>
-			Description: {{json.petInfo.description}} <br/>
-			<template v-if="json.petInfo.petImages">
-				<h4>Pet Images</h4>
-				<template v-for="image of json.petInfo.petImages" >
-					<img :src="'../assets/petImages/' + image.path" style="max-width: 300px; height: auto;">
-						<figcaption v-if="image.description">{{image.description}}</figcaption>
-					</img>
-					<br/>
-				</template>
-			</template>
-			<template v-if="json.petInfo.documentImages">
-				<h4>Documents</h4>
-				<template v-for="image of json.petInfo.documentImages" >
-					<img :src="'../assets/documentImages/' + image.path" style="max-width: 300px; height: auto;">
-						<figcaption v-if="image.description">{{image.description}}</figcaption>
-					</img>
-					<br/>
-				</template>
-			</template>
+			<div id="pet-images" v-if="json.petInfo.petImages" class="images-container">
+				<h3>Images of {{json.petInfo.name}}</h3>
+				<div class="images">
+					<div v-for="image of json.petInfo.petImages" class="image-container">
+							<img :src="'../assets/petImages/' + image.path" class="image">
+								<figcaption v-if="image.description">{{image.description}}</figcaption>
+							</img>
+					</div>
+				</div>
+			</div>
+			
+			<div id="document-images" v-if="json.petInfo.documentImages" class="images-container">
+				<h3>Documents</h3>
+				<div class="images">
+					<div v-for="image of json.petInfo.documentImages" class="image-container">
+						<img :src="'../assets/documentImages/' + image.path" class="image">
+							<figcaption v-if="image.description">{{image.description}}</figcaption>
+						</img>
+					</div>
+				</div>
+			</div>
 		</template>
 	</div>
 	<script src="js/index.js"></script>
